@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:viewModels="clr-namespace:Weather.ViewModel"
+             mc:Ignorable="d"
+             x:Class="Weather.View.WeatherPage">
+    <ContentPage.BindingContext>
+        <viewModels:WeatherViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+
+        <CollectionView ItemsSource="{Binding WeatherList}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <StackLayout  HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent" >
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <pancakeview:PancakeView Grid.Row="0"  BackgroundColor="Transparent" HeightRequest="50" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" HasShadow="False" Margin="0,40,0,0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Row="0" Grid.Column="0" Source="location.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center" Margin="35,0,0,0" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding city.name}" TextColor="Black" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="-75,0,0,0" FontAttributes="Bold"  />
+                                    <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding list[0].dt_txt}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Grid>
+                            </pancakeview:PancakeView>
+
+                            <pancakeview:PancakeView Grid.Row="1" BackgroundColor="#f9f9f9" HeightRequest="150" WidthRequest="300" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" HasShadow="True" Margin="0,50,0,0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Text="{Binding list[0].main.temp, StringFormat='{0:N0}°'}" TextColor="Black" FontSize="80" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"  />
+                                    <Label Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" Text="{Binding list[0].main.temp , StringFormat='Feels Like: {0:N0}°'}" TextColor="Black" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="15,-10,0,0"  />
+                                    <Image Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" Source="cloud.png"  Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                    <Label Grid.Column="3" Grid.Row="4" Text="{Binding list[0].weather[0].main}"  TextColor="Black" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-10,10,0"   />
+                                </Grid>
+                            </pancakeview:PancakeView>
+
+                            <Grid Grid.Row="2" HeightRequest="150" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <pancakeview:PancakeView  Grid.Column="0" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" HasShadow="True">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Text="SAT" TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                        <Image Grid.Row="1" Source="weather.png" Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <Label Grid.Row="2" Text="{Binding list[6].main.temp, StringFormat='{0:N0}°'}" TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                    </Grid>
+                                </pancakeview:PancakeView>
+
+                                <pancakeview:PancakeView  Grid.Column="1" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" HasShadow="True">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Text="SUN" TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                        <Image Grid.Row="1" Source="partlycloudly.png"  Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <Label Grid.Row="2" Text="{Binding list[14].main.temp, StringFormat='{0:N0}°'}" TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                    </Grid>
+                                </pancakeview:PancakeView>
+
+                                <pancakeview:PancakeView  Grid.Column="2" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" HasShadow="True">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Text="MON" TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                        <Image Grid.Row="1" Source="weather.png"  Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                        <Label Grid.Row="2" Text="{Binding list[30].main.temp, StringFormat='{0:N0}°'}" TextColor="Black"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                    </Grid>
+                                </pancakeview:PancakeView>
+
+                            </Grid>
+                            <Grid Grid.Row="3" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Text="WIND" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+                                <BoxView Grid.Row="1" Grid.Column="1" WidthRequest="255" HeightRequest="2"  VerticalOptions="Center" HorizontalOptions="EndAndExpand" CornerRadius="20" Color="#263144"/>
+
+                            </Grid>
+
+                            <pancakeview:PancakeView Grid.Row="4" BackgroundColor="#fff" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="200"  CornerRadius="20" HasShadow="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0" Grid.RowSpan="4" Source="windmill.png"  Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Speed" TextColor="Black"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   />
+                                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding list[0].wind.speed}" TextColor="Black"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+
+                                    <Label Grid.Row="2" Grid.Column="1" Text="Degree" TextColor="Black"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  />
+                                    <Label Grid.Row="2" Grid.Column="2" Text="{Binding list[0].wind.deg}" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+
+                                </Grid>
+                            </pancakeview:PancakeView>
+
+                            <Grid Grid.Row="5" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Text="SUNRISE AND SUNSET" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+                                <BoxView Grid.Row="1" Grid.Column="1" WidthRequest="200" HeightRequest="2" VerticalOptions="Center" HorizontalOptions="EndAndExpand" CornerRadius="20" Color="#263144"/>
+
+                            </Grid>
+                            <pancakeview:PancakeView Grid.Row="6" BackgroundColor="#fff" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="200"  CornerRadius="20" HasShadow="False">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0" Grid.RowSpan="4" Source="sunsire.png"  Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="Sunrise" TextColor="Black"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   />
+                                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding city.sunrise}" TextColor="Black"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+
+                                    <Label Grid.Row="2" Grid.Column="1" Text="Sunset" TextColor="Black"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  />
+                                    <Label Grid.Row="2" Grid.Column="2" Text="{Binding city.sunset}" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+
+                                </Grid>
+                            </pancakeview:PancakeView>
+
+                        </Grid>
+                    </StackLayout>
+
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>

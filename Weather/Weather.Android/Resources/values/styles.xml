@@ -22,9 +22,28 @@
     <item name="windowActionModeOverlay">true</item>
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+    <item name="android:statusBarColor">#fff</item>
+
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>
+
+  <!-- Splash Theme 1 -->
+  <style name="SplashTheme1" parent ="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/SplashPage</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:statusBarColor">#F5F2F2</item>
+    <item name="android:navigationBarColor">#F5F2F2</item>
+  </style>
+
+  <!-- Splash Theme 2 -->
+  <style name="SplashTheme2" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/Splash</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:statusBarColor">#F5F2F2</item>
+    <item name="android:navigationBarColor">#F5F2F2</item>
+  </style>
+
 </resources>

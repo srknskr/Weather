@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ob="clr-namespace:Weather.ViewModel" xmlns:ob1="clr-namespace:Weather.Model" xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             mc:Ignorable="d"
+             x:Class="Weather.View.OnboardingPage"
+             BackgroundColor="#F5F2F2">
+
+    <ContentPage.BindingContext>
+        <ob:OnboardingViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="IndicatorColor">#B1B493</Color>
+            <Color x:Key="SkipButtonColor">#707070</Color>
+            <Color x:Key="NextButtonColor">#B1B493</Color>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SkipButtonColor}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <CarouselView x:Name="onBoardingCarousel" IndicatorView="IndicatorView"
+                          Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                          ItemsSource="{Binding Items}"                          
+                          
+                          Position="{Binding Position}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="ob1:Onboarding">
+                    <ContentView>
+                        <FlexLayout Direction="Column"
+                                    JustifyContent="SpaceEvenly">
+
+                            <ffimageloadingsvg:SvgCachedImage  
+                                       Grid.Row="0"
+                                       Source="{Binding ImageUrl}"
+                                       Aspect="AspectFill"
+                                       WidthRequest="300" 
+                                       FlexLayout.AlignSelf="Center"/>
+
+                            <Label Grid.Row="1" 
+                                       Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       FontSize="Title" />
+
+                            <Label Grid.Row="2" 
+                                       Text="{Binding Content}"
+                                       FontSize="Body"/>
+
+                        </FlexLayout>
+                    </ContentView>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView x:Name="IndicatorView"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       IndicatorSize="7"
+                       IndicatorsShape="Circle"
+                       IndicatorColor="{StaticResource IndicatorColor}"
+                       SelectedIndicatorColor="DarkGray"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+        </IndicatorView>
+
+
+        <Button     Grid.Row="3" 
+                    Grid.Column="0"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    TextColor="{StaticResource SkipButtonColor}"
+                    Text="{Binding SkipButtonText}"
+                    Command="{Binding SkipCommand}"/>
+        <Button     Grid.Row="3" 
+                    Grid.Column="2"
+                    FontSize="Medium"
+                    CornerRadius="50"
+                    Margin="0,65,20,65"
+                    FontAttributes="Bold"
+                    BackgroundColor="{StaticResource NextButtonColor}"
+                    TextColor="{StaticResource SkipButtonColor}"
+                    Text="{Binding NextButtonText}"
+                    Command="{Binding NextCommand}"/>
+    </Grid>
+
+
+</ContentPage>
