@@ -10,7 +10,7 @@
             <CollectionView x:Name="lvStudents" SelectionMode="Single" ItemsSource="{Binding ArticleList}" SelectedItem="{Binding SelectedPlaces}" SelectionChangedCommand="{Binding SelectionCommand}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
+                </CollectionView.ItemsLayout> 
                 <CollectionView.ItemTemplate>
                     <DataTemplate >
                         <StackLayout>
