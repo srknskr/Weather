@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
 
 namespace Weather.Droid
 {
@@ -18,7 +19,8 @@ namespace Weather.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            Xamarin.Forms.Forms.SetFlags(new string[] { "IndicatorView_Experimental" });
+            Forms.SetFlags(new string[] { "IndicatorView_Experimental" });
+            Forms.SetFlags("SwipeView_Experimental");
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

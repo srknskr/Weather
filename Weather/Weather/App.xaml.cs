@@ -10,7 +10,6 @@ namespace Weather
         public App()
         {
             InitializeComponent();
-
             MainPage = new AppShell();
         }
 

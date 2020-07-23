@@ -7,11 +7,9 @@
              xmlns:viewModels="clr-namespace:Weather.ViewModel"
              mc:Ignorable="d"
              x:Class="Weather.View.WeatherPage">
-    <ContentPage.BindingContext>
-        <viewModels:WeatherViewModel/>
-    </ContentPage.BindingContext>
-    <ScrollView>
 
+    <ScrollView>
+        <!--ItemsSource="{Binding WeatherList}"-->
         <CollectionView ItemsSource="{Binding WeatherList}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" />

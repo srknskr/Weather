@@ -34,14 +34,14 @@
         </ResourceDictionary>
     </Shell.Resources>
     <TabBar >
-        <Tab Title="Weather" Icon="weather.png">
-            <ShellContent>
-                <local:WeatherPage />
-            </ShellContent>
-        </Tab>
         <Tab Title="Places" Icon="location.png">
             <ShellContent>
                 <local:PlacesPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Weather" Icon="weather.png">
+            <ShellContent>
+                <local:WeatherPage />
             </ShellContent>
         </Tab>
         <Tab Title="News" Icon="news.png">
