@@ -8,3 +8,4 @@ It is a Weather application with a beautiful UI created with Xamarin.
 * [Creating Onboarding Screen](https://www.codesitory.com/creating-onboarding-screen-in-xamarin/)
 * [How to Use PancakeView in Xamarin](https://www.codesitory.com/how-to-use-pancakeview-in-xamarin/)
 * [Using Weather API in Xamarin (OneDayForecast)](https://www.codesitory.com/using-weather-api-in-xamarin/)
+* [Using SQLite With MVVM in Xamarin](https://www.codesitory.com/using-sqlite-with-mvvm-in-xamarin/)
