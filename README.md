@@ -1,6 +1,6 @@
 # Weather
 
-It is a Weather application with a beautiful UI created with Xamarin.
+It is a Weather application with a beautiful UI created with Xamarin. Use PancakeView, SQLite, Shell Page, OpenWeatherMap API, News API.
 
 ## Blog
 
