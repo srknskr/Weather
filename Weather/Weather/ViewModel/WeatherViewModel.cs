@@ -42,7 +42,23 @@ namespace Weather.ViewModel
                 OnPropertyChanged();
             }
         }
+        private List<Main> weekList { get; set; }
+        public List<Main> WeekList
+        {
+            get
+            {
+                return weekList;
+            }
 
+            set
+            {
+                if (value != weekList)
+                {
+                    weekList = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -85,6 +101,17 @@ namespace Weather.ViewModel
           //  var weather = await WeatherAPI.GetFiveDaysAsync(selectedPlaces.CityName);
             var weather = await WeatherAPI.GetFiveDaysAsync(Places[0].CityName);
             WeatherList.Add(weather);
+
+            List<Main> week = new List<Main>();
+            for (int i = 1; i < 7; i++)
+            {
+                week.Add(new Main
+                {
+                    temp = weather.list[i].main.temp,
+                    feels_like = weather.list[i].main.feels_like
+                }) ;
+            }
+            WeekList = week;
         }
         private async Task SelectedCityAsync()
         {

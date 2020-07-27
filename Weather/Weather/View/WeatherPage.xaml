@@ -3,14 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:viewModels="clr-namespace:Weather.ViewModel"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
              x:Class="Weather.View.WeatherPage">
 
     <ScrollView>
-        <!--ItemsSource="{Binding WeatherList}"-->
-        <CollectionView ItemsSource="{Binding WeatherList}">
+
+        <StackLayout>
+
+
+
+
+            <CollectionView ItemsSource="{Binding WeatherList}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" />
             </CollectionView.ItemsLayout>
@@ -29,7 +33,6 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-
                             <pancakeview:PancakeView Grid.Row="0"  BackgroundColor="Transparent" HeightRequest="50" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" HasShadow="False" Margin="0,40,0,0" >
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -48,7 +51,6 @@
                                     <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding list[0].dt_txt}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </Grid>
                             </pancakeview:PancakeView>
-
                             <pancakeview:PancakeView Grid.Row="1" BackgroundColor="#f9f9f9" HeightRequest="150" WidthRequest="300" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" HasShadow="True" Margin="0,50,0,0">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -71,8 +73,13 @@
                                 </Grid>
                             </pancakeview:PancakeView>
 
-                            <Grid Grid.Row="2" HeightRequest="150" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,0">
-                                <Grid.ColumnDefinitions>
+
+                                    
+                            
+                                <Grid Grid.Row="2" HeightRequest="150" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,0">
+                                    
+
+                                    <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -117,7 +124,10 @@
                                     </Grid>
                                 </pancakeview:PancakeView>
 
+                                
                             </Grid>
+
+
                             <Grid Grid.Row="3" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -201,5 +211,8 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        </StackLayout>
+        <!--ItemsSource="{Binding WeatherList}"-->
     </ScrollView>
 </ContentPage>

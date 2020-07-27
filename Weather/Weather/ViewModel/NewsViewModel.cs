@@ -5,9 +5,12 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Weather.Connection;
 using Weather.Model;
 using Weather.Services;
+using Weather.View;
+using Xamarin.Forms;
 
 namespace Weather.ViewModel
 {
@@ -81,15 +84,16 @@ namespace Weather.ViewModel
         }
         private async Task APIAsync()
         {
-            var news = await NewsAPI.GetNewsAsync(Places[0].CityName + " Hava Durumu");
+            var news = await NewsAPI.GetNewsAsync(Places[0].CityName + " Weather");
             List<Article> articleList = new List<Article>();
-            for (int i = 0; i < news.articles.Count; i++)
+            for (int i = 0; i < 5; i++)
             {
                 articleList.Add(new Article
                 {
                     title= news.articles[i].title,
                     description=news.articles[i].description,
-                    urlToImage=news.articles[i].urlToImage
+                    urlToImage=news.articles[i].urlToImage,
+                    url=news.articles[i].url
                 }
                 );
             }
@@ -97,5 +101,6 @@ namespace Weather.ViewModel
 
             ArticleList = articleList;
         }
+
     }
 }
