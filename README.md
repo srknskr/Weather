@@ -5,7 +5,7 @@ It is a Weather application with a beautiful UI created with Xamarin.
 ## Blog
 
 * [Using Shell in Xamarin.Forms](https://www.codesitory.com/xamarin/using-shell-in-xamarin/)
-* [Top 5 Useful Plugins in Xamarin](hhttps://www.codesitory.com/xamarin/top-5-useful-plugins-in-xamarin/)
+* [Top 5 Useful Plugins in Xamarin](https://www.codesitory.com/xamarin/top-5-useful-plugins-in-xamarin/)
 * [Material Theme in Xamarin](https://www.codesitory.com/xamarin/material-theme-in-xamarin/)
 * [Making Splash Screen](https://www.codesitory.com/xamarin/making-splash-screen-in-xamarin/)
 * [Creating Onboarding Screen](https://www.codesitory.com/xamarin/creating-onboarding-screen-in-xamarin/)
