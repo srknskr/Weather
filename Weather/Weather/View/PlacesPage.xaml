@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              x:Class="Weather.View.PlacesPage">
     <AbsoluteLayout >
-        <CollectionView x:Name="lvStudents" SelectionMode="Single" ItemsSource="{Binding Places}" SelectedItem="{Binding SelectedPlaces}" SelectionChangedCommand="{Binding SelectionCommand}">
+        <CollectionView x:Name="lvStudents" SelectionMode="Single"  ItemsSource="{Binding Places}" SelectedItem="{Binding SelectedPlaces}" SelectionChangedCommand="{Binding SelectionCommand}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
@@ -31,6 +31,7 @@
                         </VisualStateManager.VisualStateGroups>
 
                         <pancakeview:PancakeView BackgroundColor="#d4d6c8" HeightRequest="100" WidthRequest="300" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Padding="0" Margin="0,10" >
+    
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -47,8 +48,6 @@
 
                                 <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Text="{Binding CityName}" TextColor="Black" FontSize="40" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"  />
                                 <Label Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" Text="{Binding CityKey}" TextColor="Black" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="15,-10,0,0"  />
-                                <!--<Image Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Source="cloud.png"  Aspect="AspectFill"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />-->
-                                <!--<Label Grid.Column="2" Grid.Row="4" Text="{Binding list[0].main.temp, StringFormat='{0:N0}°'}"  TextColor="Black" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,-10,10,0"   />-->
                             </Grid>
                         </pancakeview:PancakeView>
                     </StackLayout>
@@ -58,20 +57,8 @@
 
         <pancakeview:PancakeView AbsoluteLayout.LayoutBounds="0.90,0.95,60,60"
             AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="#d4d6c8" HasShadow="True" HeightRequest="60" WidthRequest="60" CornerRadius="60"   BackgroundGradientAngle="180">
-            <!--<ImageButton
-
-            BackgroundColor="Transparent"
-            HeightRequest="10"
-            WidthRequest="10"
-            Source="plus.png"
-            Clicked="ImageButton_Clicked">
-
-                <ImageButton.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}"/>
-            </ImageButton.GestureRecognizers>
-            </ImageButton>-->
             <pancakeview:PancakeView.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" NumberOfTapsRequired="2"/>
             </pancakeview:PancakeView.GestureRecognizers>
             <Image Source="plus.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center"/>
 

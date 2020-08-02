@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             mc:Ignorable="d"
+             x:Class="Weather.View.ProgressBarPage">
+    <ContentPage.Content>
+        <pancakeview:PancakeView 
+            Grid.Row="7" 
+            BackgroundColor="#f9f9f9" 
+            HeightRequest="300" 
+            WidthRequest="300" 
+            CornerRadius="20" 
+            HorizontalOptions="Center" 
+            VerticalOptions="Center" 
+            HasShadow="True" 
+            Margin="0,50,0,0">
+            <progressBar:SfCircularProgressBar
+                Margin="10"
+                Grid.Row="0" 
+                Grid.Column="0"
+                Minimum="0"
+                Maximum="100"
+                Progress="80"
+                TrackColor="#f3f3f3"
+                IndicatorOuterRadius="0.7" 
+                IndicatorInnerRadius="1 "
+                TrackOuterRadius="0.7"
+                TrackInnerRadius="1 "
+                EasingEffect="CubicInOut"
+                IndeterminateEasingEffect="SinInOut" >
+
+                <progressBar:SfCircularProgressBar.Content>
+                    <Grid>
+                        <Label Grid.Row="0" Text="HUMIDITY"  HorizontalOptions="Center" FontSize="20"/>
+                        <Label Grid.Row="1" Text="80%" FontAttributes="Bold" TextColor="Black" FontSize="35" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                </progressBar:SfCircularProgressBar.Content>
+                <progressBar:SfCircularProgressBar.RangeColors>
+                    <progressBar:RangeColorCollection>
+                        <progressBar:RangeColor IsGradient="True" Color="#e9e9e5" Start="0" End="25"/>
+                        <progressBar:RangeColor IsGradient="True" Color="#d4d6c8" Start="25" End="50"/>
+                        <progressBar:RangeColor IsGradient="True" Color="#9a9b94" Start="50" End="75"/>
+                        <progressBar:RangeColor IsGradient="True" Color="#52524e" Start="75" End="100"/>
+                    </progressBar:RangeColorCollection>
+                </progressBar:SfCircularProgressBar.RangeColors>
+            </progressBar:SfCircularProgressBar>
+        </pancakeview:PancakeView>
+    </ContentPage.Content>
+</ContentPage>

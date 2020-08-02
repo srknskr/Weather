@@ -54,7 +54,16 @@ namespace Weather.ViewModel
                 OnPropertyChanged();
             }
         }
-
+        private Places _placess;
+        public Places Placess
+        {
+            get { return _placess; }
+            set
+            {
+                _placess = value;
+                OnPropertyChanged();
+            }
+        }
         public PlacesViewModel()
         {
             Places = GetConnection().GetAll();
@@ -62,17 +71,24 @@ namespace Weather.ViewModel
         public ICommand SelectionCommand => new Command(GoToWeatherAsync);
         private async void GoToWeatherAsync(object obj)
         {
-            if (selectedPlaces!=null)
-            {
-                var viewModel = new WeatherViewModel(selectedPlaces);
-                var weatherPage = new WeatherPage { BindingContext = viewModel };
-                await Shell.Current.Navigation.PushAsync(weatherPage);
-            }
+
+            //if (selectedPlaces != null)
+            //{
+            //    var viewModel = new WeatherViewModel(selectedPlaces);
+            //    var weatherPage = new WeatherPage { BindingContext = viewModel };
+            //    await Shell.Current.Navigation.PushAsync(weatherPage);
+            //}
         }
         public ICommand TapCommand => new Command(Tap);
         private async void Tap()
         {
-            await Shell.Current.Navigation.PushAsync(new AddPlacesPage());
+            await Shell.Current.Navigation.PushAsync(new AddPlacesPage ());
+        }
+        public ICommand DeleteCommand => new Command(Delete);
+        private async void Delete()
+        {
+            GetConnection().Delete(selectedPlaces.Id);
+            Places = GetConnection().GetAll();
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

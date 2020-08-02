@@ -8,7 +8,7 @@
     <StackLayout Orientation="Vertical" Padding="20">
 
         <pv:PancakeView HasShadow="True" HeightRequest="50" WidthRequest="300" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientAngle="180">
-            <Entry x:Name="cityName" Placeholder="CityName" HorizontalOptions="FillAndExpand"></Entry>
+            <Entry x:Name="cityName" Placeholder="CityName" HorizontalOptions="FillAndExpand" Text="{Binding CityName}"></Entry>
             <pv:PancakeView.BackgroundGradientStops>
                 <pv:GradientStopCollection>
                     <pv:GradientStop Color="#9a9b94" Offset="0" />
@@ -18,7 +18,7 @@
         </pv:PancakeView>
 
         <pv:PancakeView HasShadow="True" HeightRequest="50" WidthRequest="300" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientAngle="180">
-            <Entry x:Name="cityKey" Placeholder="CityKey" HorizontalOptions="FillAndExpand"></Entry>
+            <Entry x:Name="cityKey" Placeholder="CityKey" HorizontalOptions="FillAndExpand" Text="{Binding CityKey}"></Entry>
             <pv:PancakeView.BackgroundGradientStops>
                 <pv:GradientStopCollection>
                     <pv:GradientStop Color="#9a9b94" Offset="0" />
@@ -26,8 +26,12 @@
                 </pv:GradientStopCollection>
             </pv:PancakeView.BackgroundGradientStops>
         </pv:PancakeView>
+        
         <pv:PancakeView HasShadow="True" HeightRequest="50" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientAngle="180">
-            <Button Text="Save" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" FontSize="20" FontAttributes="Bold" Clicked="Button_Clicked"></Button>
+            <Label Text="SAVE" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <pv:PancakeView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}"/>
+            </pv:PancakeView.GestureRecognizers>
             <pv:PancakeView.BackgroundGradientStops>
                 <pv:GradientStopCollection>
                     <pv:GradientStop Color="#9a9b94" Offset="0" />
@@ -35,5 +39,6 @@
                 </pv:GradientStopCollection>
             </pv:PancakeView.BackgroundGradientStops>
         </pv:PancakeView>
-        </StackLayout>
+        
+    </StackLayout>
 </ContentPage>
