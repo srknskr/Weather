@@ -98,12 +98,13 @@ namespace Weather.ViewModel
         }
         private async Task APIAsync()
         {
-          //  var weather = await WeatherAPI.GetFiveDaysAsync(selectedPlaces.CityName);
+           // var weather = await WeatherAPI.GetFiveDaysAsync(selectedPlaces.CityName);
             var weather = await WeatherAPI.GetFiveDaysAsync(Places[0].CityName);
+        //    var weather = await WeatherAPI.GetFiveDaysAsync("Istanbul");
             WeatherList.Add(weather);
 
             List<Main> week = new List<Main>();
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 week.Add(new Main
                 {
@@ -116,7 +117,19 @@ namespace Weather.ViewModel
         private async Task SelectedCityAsync()
         {
             var weather = await WeatherAPI.GetFiveDaysAsync(selectedPlaces.CityName);
+        //    var weather = await WeatherAPI.GetFiveDaysAsync("Istanbul");
             WeatherList.Add(weather);
+
+            List<Main> week = new List<Main>();
+            for (int i = 0; i < 7; i++)
+            {
+                week.Add(new Main
+                {
+                    temp = weather.list[i].main.temp,
+                    feels_like = weather.list[i].main.feels_like
+                });
+            }
+            WeekList = week;
         }
 
     }

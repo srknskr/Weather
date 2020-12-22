@@ -15,7 +15,6 @@
             CornerRadius="20" 
             HorizontalOptions="Center" 
             VerticalOptions="Center" 
-            HasShadow="True" 
             Margin="0,50,0,0">
             <progressBar:SfCircularProgressBar
                 Margin="10"
@@ -31,7 +30,7 @@
                 TrackInnerRadius="1 "
                 EasingEffect="CubicInOut"
                 IndeterminateEasingEffect="SinInOut" >
-
+               
                 <progressBar:SfCircularProgressBar.Content>
                     <Grid>
                         <Label Grid.Row="0" Text="HUMIDITY"  HorizontalOptions="Center" FontSize="20"/>
@@ -47,6 +46,9 @@
                     </progressBar:RangeColorCollection>
                 </progressBar:SfCircularProgressBar.RangeColors>
             </progressBar:SfCircularProgressBar>
+            <pancakeview:PancakeView.Shadow>
+                <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+            </pancakeview:PancakeView.Shadow>
         </pancakeview:PancakeView>
     </ContentPage.Content>
 </ContentPage>

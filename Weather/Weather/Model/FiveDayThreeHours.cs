@@ -17,13 +17,13 @@ namespace Weather.Model
         public double temp_kf { get; set; }
     }
 
-    public class Weather
-    {
-        public int id { get; set; }
-        public string main { get; set; }
-        public string description { get; set; }
-        public string icon { get; set; }
-    }
+    //public class Weather
+    //{
+    //    public int id { get; set; }
+    //    public string main { get; set; }
+    //    public string description { get; set; }
+    //    public string icon { get; set; }
+    //}
 
     public class Clouds
     {

@@ -56,10 +56,13 @@
             </CollectionView>
 
         <pancakeview:PancakeView AbsoluteLayout.LayoutBounds="0.90,0.95,60,60"
-            AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="#d4d6c8" HasShadow="True" HeightRequest="60" WidthRequest="60" CornerRadius="60"   BackgroundGradientAngle="180">
+            AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="#d4d6c8"  HeightRequest="60" WidthRequest="60" CornerRadius="60"   BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
             <pancakeview:PancakeView.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}" NumberOfTapsRequired="2"/>
             </pancakeview:PancakeView.GestureRecognizers>
+            <pancakeview:PancakeView.Shadow>
+                <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+            </pancakeview:PancakeView.Shadow>
             <Image Source="plus.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center"/>
 
         </pancakeview:PancakeView>

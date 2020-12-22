@@ -72,12 +72,12 @@ namespace Weather.ViewModel
         private async void GoToWeatherAsync(object obj)
         {
 
-            //if (selectedPlaces != null)
-            //{
-            //    var viewModel = new WeatherViewModel(selectedPlaces);
-            //    var weatherPage = new WeatherPage { BindingContext = viewModel };
-            //    await Shell.Current.Navigation.PushAsync(weatherPage);
-            //}
+            if (selectedPlaces != null)
+            {
+                var viewModel = new WeatherViewModel(selectedPlaces);
+                var weatherPage = new WeatherPage { BindingContext = viewModel };
+                await Shell.Current.Navigation.PushAsync(weatherPage);
+            }
         }
         public ICommand TapCommand => new Command(Tap);
         private async void Tap()

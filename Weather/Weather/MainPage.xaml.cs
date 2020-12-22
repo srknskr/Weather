@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weather.ViewModel;
 using Xamarin.Forms;
 
 namespace Weather
@@ -16,6 +17,8 @@ namespace Weather
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = new MainViewModel();
+
         }
     }
 }

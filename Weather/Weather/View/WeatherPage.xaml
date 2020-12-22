@@ -4,13 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
-             xmlns:progressbar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" 
+             xmlns:progressbar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" xmlns:local="clr-namespace:Weather.ViewModel"
              mc:Ignorable="d"
              x:Class="Weather.View.WeatherPage">
 
     <ScrollView>
-        <StackLayout>
-
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            
             <CollectionView ItemsSource="{Binding WeatherList}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" />
@@ -31,7 +31,10 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <pancakeview:PancakeView Grid.Row="0"  BackgroundColor="Transparent" HeightRequest="50" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" HasShadow="False" Margin="0,40,0,0" >
+                                <pancakeview:PancakeView Grid.Row="0"  BackgroundColor="Transparent" HeightRequest="50" WidthRequest="200" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,40,0,0" >
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                    </pancakeview:PancakeView.Shadow>
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
@@ -41,18 +44,18 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
-
                                         </Grid.ColumnDefinitions>
-
-
-
-
+                                        
                                         <Image Grid.Row="0" Grid.Column="0" Source="location.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25" HorizontalOptions="Center" VerticalOptions="Center" Margin="35,0,0,0" />
                                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding city.name}" TextColor="Black" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="-75,0,0,0" FontAttributes="Bold"  />
                                         <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding list[0].dt_txt}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     </Grid>
                                 </pancakeview:PancakeView>
-                                <pancakeview:PancakeView Grid.Row="1" BackgroundColor="#f9f9f9" HeightRequest="150" WidthRequest="300" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" HasShadow="True" Margin="0,50,0,0">
+                                
+                                <pancakeview:PancakeView Grid.Row="1" BackgroundColor="#f9f9f9" HeightRequest="150" WidthRequest="300" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,50,0,0">
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                    </pancakeview:PancakeView.Shadow>
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
@@ -74,11 +77,7 @@
                                     </Grid>
                                 </pancakeview:PancakeView>
 
-
-
-
                                 <Grid Grid.Row="2" HeightRequest="150" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,0">
-
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -86,7 +85,10 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <pancakeview:PancakeView  Grid.Column="0" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" HasShadow="True">
+                                    <pancakeview:PancakeView  Grid.Column="0" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" >
+                                        <pancakeview:PancakeView.Shadow>
+                                            <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                        </pancakeview:PancakeView.Shadow>
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
@@ -99,7 +101,10 @@
                                         </Grid>
                                     </pancakeview:PancakeView>
 
-                                    <pancakeview:PancakeView  Grid.Column="1" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" HasShadow="True">
+                                    <pancakeview:PancakeView  Grid.Column="1" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" >
+                                        <pancakeview:PancakeView.Shadow>
+                                            <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                        </pancakeview:PancakeView.Shadow>
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
@@ -112,7 +117,10 @@
                                         </Grid>
                                     </pancakeview:PancakeView>
 
-                                    <pancakeview:PancakeView  Grid.Column="2" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" HasShadow="True">
+                                    <pancakeview:PancakeView  Grid.Column="2" BackgroundColor="#f9f9f9" HeightRequest="300" WidthRequest="100" CornerRadius="20" >
+                                        <pancakeview:PancakeView.Shadow>
+                                            <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                        </pancakeview:PancakeView.Shadow>
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
@@ -125,9 +133,7 @@
                                         </Grid>
                                     </pancakeview:PancakeView>
 
-
                                 </Grid>
-
 
                                 <Grid Grid.Row="3" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,30,0,0">
                                     <Grid.RowDefinitions>
@@ -144,7 +150,10 @@
 
                                 </Grid>
 
-                                <pancakeview:PancakeView Grid.Row="4" BackgroundColor="#fff" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="200"  CornerRadius="20" HasShadow="False">
+                                <pancakeview:PancakeView Grid.Row="4" BackgroundColor="#fff" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="200"  CornerRadius="20" >
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                    </pancakeview:PancakeView.Shadow>
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
@@ -182,7 +191,10 @@
                                     <BoxView Grid.Row="1" Grid.Column="1" WidthRequest="200" HeightRequest="2" VerticalOptions="Center" HorizontalOptions="EndAndExpand" CornerRadius="20" Color="#263144"/>
 
                                 </Grid>
-                                <pancakeview:PancakeView Grid.Row="6" BackgroundColor="#fff" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="200"  CornerRadius="20" HasShadow="False">
+                                <pancakeview:PancakeView Grid.Row="6" BackgroundColor="#fff" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" HeightRequest="200"  CornerRadius="20">
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                    </pancakeview:PancakeView.Shadow>
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
@@ -206,8 +218,10 @@
                                     </Grid>
                                 </pancakeview:PancakeView>
 
-                                <pancakeview:PancakeView Grid.Row="7" BackgroundColor="#f9f9f9" HeightRequest="150" WidthRequest="150" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" HasShadow="True" Margin="0,50,0,0">
-                                    
+                                <pancakeview:PancakeView Grid.Row="7" BackgroundColor="#f9f9f9" HeightRequest="150" WidthRequest="150" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,50,0,0">
+                                    <pancakeview:PancakeView.Shadow>
+                                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                                    </pancakeview:PancakeView.Shadow>
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
@@ -215,7 +229,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                            <progressbar:SfCircularProgressBar Margin="10"
+                                        <progressbar:SfCircularProgressBar Margin="10"
                                             Grid.Row="0" 
                                             Grid.Column="0"
 
@@ -230,29 +244,29 @@
                                     EasingEffect="CubicInOut"
                                     IndeterminateEasingEffect="SinInOut" >
 
-                                                <progressbar:SfCircularProgressBar.Content>
-                                                    <Grid>
+                                            <progressbar:SfCircularProgressBar.Content>
+                                                <Grid>
                                                     <Label Grid.Row="0" Text="HUMIDITY"  HorizontalOptions="Center" FontSize="10"/>
                                                     <Label Grid.Row="1" Text="{Binding list[0].main.humidity,StringFormat='{0}%'}" FontAttributes="Bold" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
-                                                    </Grid>
-                                                </progressbar:SfCircularProgressBar.Content>
+                                                </Grid>
+                                            </progressbar:SfCircularProgressBar.Content>
 
-                                                <progressbar:SfCircularProgressBar.RangeColors>
-                                                    <progressbar:RangeColorCollection>
-                                                        <progressbar:RangeColor IsGradient="True" Color="#e9e9e5" Start="0" End="25"/>
-                                                        <progressbar:RangeColor IsGradient="True" Color="#d4d6c8" Start="25" End="50"/>
-                                                        <progressbar:RangeColor IsGradient="True" Color="#9a9b94" Start="50" End="75"/>
-                                                        <progressbar:RangeColor IsGradient="True" Color="#52524e" Start="75" End="100"/>
-                                                    </progressbar:RangeColorCollection>
-                                                </progressbar:SfCircularProgressBar.RangeColors>
+                                            <progressbar:SfCircularProgressBar.RangeColors>
+                                                <progressbar:RangeColorCollection>
+                                                    <progressbar:RangeColor IsGradient="True" Color="#e9e9e5" Start="0" End="25"/>
+                                                    <progressbar:RangeColor IsGradient="True" Color="#d4d6c8" Start="25" End="50"/>
+                                                    <progressbar:RangeColor IsGradient="True" Color="#9a9b94" Start="50" End="75"/>
+                                                    <progressbar:RangeColor IsGradient="True" Color="#52524e" Start="75" End="100"/>
+                                                </progressbar:RangeColorCollection>
+                                            </progressbar:SfCircularProgressBar.RangeColors>
 
-                                            </progressbar:SfCircularProgressBar>
-                                        
+                                        </progressbar:SfCircularProgressBar>
+
 
 
                                     </Grid>
                                 </pancakeview:PancakeView>
-                                
+
 
                             </Grid>
                         </StackLayout>
@@ -262,6 +276,56 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+                        <!--<StackLayout >
+                <pancakeview:PancakeView Grid.Row="1"  BackgroundColor="#f9f9f9" HeightRequest="400" WidthRequest="400" CornerRadius="20" HasShadow="True">
+
+                    <chart:SfChart x:Name="Chart" HorizontalOptions="Fill" VerticalOptions="Fill">
+
+
+
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend />
+                        </chart:SfChart.Legend>
+
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text="5 Day Forecast" FontAttributes="Bold" FontSize="15"/>
+                        </chart:SfChart.Title>
+
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis>
+                                <chart:CategoryAxis.Title>
+                                    <chart:ChartAxisTitle Text="Temp (°C)"/>
+                                </chart:CategoryAxis.Title>
+                            </chart:CategoryAxis>
+                        </chart:SfChart.PrimaryAxis>
+
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis>
+                                <chart:NumericalAxis.Title>
+                                    <chart:ChartAxisTitle Text="Temp (°C)"/>
+                                </chart:NumericalAxis.Title>
+                            </chart:NumericalAxis>
+                        </chart:SfChart.SecondaryAxis>
+
+                        <chart:SfChart.Series>
+                            <chart:ColumnSeries ItemsSource="{Binding WeekList}" Label="Temperature" XBindingPath="temp" YBindingPath="temp" EnableTooltip="True">
+
+                            </chart:ColumnSeries>
+                            <chart:ColumnSeries ItemsSource="{Binding WeekList}" Label="Feels Like" XBindingPath="temp" YBindingPath="feels_like" EnableTooltip="True">
+
+                            </chart:ColumnSeries>
+                        </chart:SfChart.Series>
+
+                    </chart:SfChart>
+
+                </pancakeview:PancakeView>
+
+            </StackLayout>-->
+
+
+
+
         </StackLayout>
     </ScrollView>
+    
 </ContentPage>
