@@ -31,6 +31,26 @@ namespace Weather.ViewModel
                 OnPropertyChanged();
             }
         }
+        private double _cityLat;
+        public double CityLat
+        {
+            get { return _cityLat; }
+            set
+            {
+                _cityLat = value;
+                OnPropertyChanged();
+            }
+        }
+        private double _cityLon;
+        public double CityLon
+        {
+            get { return _cityLon; }
+            set
+            {
+                _cityLon = value;
+                OnPropertyChanged();
+            }
+        }
 
         private Places places = new Places();
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -40,23 +60,28 @@ namespace Weather.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public AddPlacesViewModel()
         {
-
-
-           
         }
 
         public ICommand TapCommand => new Command(Tap);
         private async void Tap()
         {
-
             Database database = new Database();
             places.CityKey = CityKey;
             places.CityName = CityName;
+            places.CityLat = CityLat;
+            places.CityLon = CityLon;
 
-            var result = database.Insert(places);
-           
-            await Shell.Current.Navigation.PushAsync(new PlacesPage());
+            database.Insert(places);
+            await App.Current.MainPage.Navigation.PushModalAsync(new PlacesPage());
             DependencyService.Get<IToast>().LongToast("Your Places Added");
+        }
+        public ICommand BackCommand => new Command(Back);
+        private async void Back()
+        {
+            //var mainPage = new AddPlacesPage();//this could be content page
+            //var rootPage = new NavigationPage(mainPage);
+            //App.Navigation = rootPage.Navigation;
+            await App.Current.MainPage.Navigation.PopModalAsync();  
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Weather.View.FontsPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="Oswald-Bold.ttf#Oswald-Bold.ttf" />
+                <On Platform="UWP" Value="/Assets/NunitoSans-Bold.ttf#NunitoSans-Bold.ttf" />
+                <On Platform="iOS" Value="NunitoSans-Bold.ttf" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="Oswald-Regular.ttf#Oswald-Regular.ttf" />
+                <On Platform="UWP" Value="/Assets/NunitoSans-Regular.ttf" />
+                <On Platform="iOS" Value="NunitoSans-Regular.ttf" />
+            </OnPlatform>
+
+        </ResourceDictionary>
+    </Page.Resources>
+    <ContentPage.Content>
+        <StackLayout  Margin="0,50,0,0">
+            <Label Text="Default Text"/>
+            <Label FontFamily="{StaticResource NormalFont}" Text="Normal Text"/>
+            <Label FontFamily="{StaticResource BoldFont}" Text="Bold Text"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -4,6 +4,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
+
 namespace Weather
 {
     public partial class App : Application
@@ -13,9 +15,8 @@ namespace Weather
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mjk3NDk0QDMxMzgyZTMyMmUzMEY4b3pZZUtOcldJWHNIMFZhMithVlA3ZlBISWJBbVZNSEcrdjNnb2lXaFk9");
             InitializeComponent();
             MainPage = new MainPage();
-         
         }
-
+   
         protected override void OnStart()
         {
             VersionTracking.Track();

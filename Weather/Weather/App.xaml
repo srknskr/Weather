@@ -5,7 +5,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Weather.App">
-    <Application.Resources>
+<Application.Resources>
+    <Style TargetType="Label">
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+    
+  
+    </Style>
 
-    </Application.Resources>
+    <Style x:Key="NormalFont" TargetType="Label">
+        <Setter Property="FontFamily" Value="NunitoSans-Regular.ttf#NunitoSans-Regular.ttf"/>
+    </Style>
+    
+    <Style x:Key="BoldFont" TargetType="Label">
+        <Setter Property="FontFamily" Value="NunitoSans-Bold.ttf#NunitoSans-Bold.ttf"/>
+    </Style>
+    
+    <Style x:Key="ItalicFont" TargetType="Label">
+        <Setter Property="FontFamily" Value="NunitoSans-Italic.ttf#NunitoSans-Italic.ttf"/>
+    </Style>
+
+</Application.Resources>
 </Application>

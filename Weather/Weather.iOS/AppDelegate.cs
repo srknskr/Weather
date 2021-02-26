@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Google.MobileAds;
 using UIKit;
 
 namespace Weather.iOS
@@ -20,12 +21,14 @@ namespace Weather.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-        {
-            global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+{
+    global::Xamarin.Forms.Forms.Init();
+    MobileAds.Configure("ca-app-pub-3940256099942544~1458002511");
 
-            return base.FinishedLaunching(app, options);
-        }
+    LoadApplication(new App());
+
+    return base.FinishedLaunching(app, options);
+}
     }
 }

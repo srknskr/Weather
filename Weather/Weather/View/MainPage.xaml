@@ -1,17 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             mc:Ignorable="d"
-             x:Class="Weather.MainPage" 
+             xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             x:Class="Weather.View.MainPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
              BackgroundColor="#F5F8FD">
 
+
+    
     <ScrollView>
+
         <StackLayout>
-            <CollectionView ItemsSource="{Binding WeatherList}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <StackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,10"  >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <pancakeview:PancakeView Grid.Column="0" WidthRequest="41" HeightRequest="41" CornerRadius="10"  BackgroundColor="#FFF">
+                            <pancakeview:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoPlacesCommand}"/>
+                            </pancakeview:PancakeView.GestureRecognizers>
+                            <pancakeview:PancakeView.Shadow>
+                                <pancakeview:DropShadow Color="#000"/>
+                            </pancakeview:PancakeView.Shadow>
+                            <Image Source="location.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
+                        </pancakeview:PancakeView>
+
+                        <pancakeview:PancakeView Grid.Column="3" WidthRequest="41" HeightRequest="41" CornerRadius="10" BackgroundColor="#FFF">
+                            <pancakeview:PancakeView.Shadow>
+                                <pancakeview:DropShadow Color="#000"   />
+                            </pancakeview:PancakeView.Shadow>
+                            <Image Source="menu.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
+                        </pancakeview:PancakeView>
+
+                    </Grid>
+                </StackLayout>
+
+            </Grid>
+
+            
+            
+            
+            <CollectionView ItemsSource="{Binding WeatherList}" Grid.Row="1">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout  Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
@@ -24,37 +67,18 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
 
 
-                                <StackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,10"  >
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
+                                
 
-                                        <pancakeview:PancakeView Grid.Column="0" WidthRequest="41" HeightRequest="41" CornerRadius="10"  BackgroundColor="#FFF">
-                                            <pancakeview:PancakeView.Shadow>
-                                                <pancakeview:DropShadow Color="#000"/>
-                                            </pancakeview:PancakeView.Shadow>
-                                            <Image Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
-                                        </pancakeview:PancakeView>
-                                        <pancakeview:PancakeView Grid.Column="3" WidthRequest="41" HeightRequest="41" CornerRadius="10" BackgroundColor="#FFF">
-                                            <pancakeview:PancakeView.Shadow>
-                                                <pancakeview:DropShadow Color="#000"   />
-                                            </pancakeview:PancakeView.Shadow>
-                                            <Image Source="menu.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
-                                        </pancakeview:PancakeView>
-
-                                    </Grid>
-                                </StackLayout>
-
-                                <pancakeview:PancakeView Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="350" HeightRequest="200" CornerRadius="10" Margin="20,10,20,10"   BackgroundColor="#91B3EE">
+                                <pancakeview:PancakeView Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="450" HeightRequest="200" CornerRadius="10" Margin="20,10,20,10"  >
+                                    <pancakeview:PancakeView.BackgroundGradientStops BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+                                        <pancakeview:GradientStop Color="#87a8d0" Offset="0"/>
+                                        <pancakeview:GradientStop Color="#b9ceeb" Offset="0.75"/>
+                                        <pancakeview:GradientStop Color="#deecfc" Offset="1"/>
+                                    </pancakeview:PancakeView.BackgroundGradientStops>
                                     <pancakeview:PancakeView.Shadow>
                                         <pancakeview:DropShadow Color="#000000" Offset="10,10"   />
                                     </pancakeview:PancakeView.Shadow>
@@ -72,7 +96,7 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}" FontSize="15" TextColor="#FFF"/>
+                                            <Label Grid.Row="0" Grid.Column="0"  Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}" FontSize="15" TextColor="#FFF" />
                                             <Label Grid.Row="1" Grid.Column="0"  Text="{Binding timezone}" FontSize="15" FontAttributes="Bold" TextColor="#FFF"/>
                                             <Label Grid.Row="2" Grid.Column="0"  Text="{Binding current.temp, StringFormat='{0:N0}°'}" FontSize="52" FontAttributes="Bold" TextColor="#FFF"/>
                                             <Label Grid.Row="3" Text="{Binding current.weather[0].main}" FontSize="15" TextColor="#FFF"/>
@@ -83,7 +107,7 @@
                                     </StackLayout>
                                 </pancakeview:PancakeView>
 
-                                <pancakeview:PancakeView Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="350" HeightRequest="100" CornerRadius="10" Margin="20,10,20,10"   BackgroundColor="#FFF">
+                                <pancakeview:PancakeView Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="450" HeightRequest="100" CornerRadius="10" Margin="20,10,20,10"   BackgroundColor="#FFF">
                                     <pancakeview:PancakeView.Shadow>
                                         <pancakeview:DropShadow Color="#9a9b94" Offset="5,5"   />
                                     </pancakeview:PancakeView.Shadow>
@@ -125,7 +149,7 @@
                                     </StackLayout>
                                 </pancakeview:PancakeView>
 
-                                <StackLayout Grid.Row="3" HorizontalOptions="Center"  VerticalOptions="Center" Margin="20,5,20,5" >
+                                <StackLayout Grid.Row="2" HorizontalOptions="Center"  VerticalOptions="Center" Margin="20,5,20,5" >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -135,14 +159,14 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Label Grid.Column="0" Text="4 Days" FontSize="15" FontAttributes="Bold" TextColor="#7B7C7D"  HorizontalTextAlignment="Start" />
-                                        <Label  Grid.Column="3" Text="See All"  FontSize="15" FontAttributes="Bold" TextColor="#7B7C7D" HorizontalTextAlignment="End" />
-                                        
+                                        <Label  Grid.Column="3" Text="See All"  FontSize="15" FontAttributes="Bold" TextColor="#91B3EE" HorizontalTextAlignment="End" />
+
                                     </Grid>
-                                 
+
                                 </StackLayout>
 
-                                <pancakeview:PancakeView Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="350" HeightRequest="170" CornerRadius="10" Margin="20,5,20,5"  BackgroundColor="Transparent">
-                                    
+                                <pancakeview:PancakeView Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="400" HeightRequest="175" CornerRadius="10" Margin="20,5,20,5"  BackgroundColor="Transparent">
+
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
                                         <Grid >
                                             <Grid.ColumnDefinitions>
@@ -151,29 +175,29 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            
-                                            <pancakeview:PancakeView Grid.Column="0"  WidthRequest="60" HeightRequest="150" CornerRadius="10" BackgroundColor="#91B3EE">
+
+                                            <pancakeview:PancakeView Grid.Column="0"  WidthRequest="100" HeightRequest="175" CornerRadius="10" BackgroundColor="#91B3EE">
                                                 <StackLayout Margin="5">
                                                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding daily[1].date_time, StringFormat='{0:M}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontAttributes="Bold" TextColor="#FFF"/>
                                                     <Image Grid.Row="1" Grid.Column="0" Source="{Binding daily[1].weather[0].icon_url}" VerticalOptions="Center" HorizontalOptions="Center"/>
                                                     <Label Grid.Row="2" Grid.Column="0" Text="{Binding daily[1].temp.day, StringFormat='{0:N0}°'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontAttributes="Bold" TextColor="#FFF"/>
                                                 </StackLayout>
                                             </pancakeview:PancakeView>
-                                            <pancakeview:PancakeView  Grid.Column="1"  WidthRequest="60" HeightRequest="150" CornerRadius="10" BackgroundColor="#FFF">
+                                            <pancakeview:PancakeView  Grid.Column="1"  WidthRequest="100" HeightRequest="175" CornerRadius="10" BackgroundColor="#FFF">
                                                 <StackLayout  Margin="5">
                                                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding daily[2].date_time, StringFormat='{0:M}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontAttributes="Bold" TextColor="#7B7C7D"/>
                                                     <Image Grid.Row="1" Grid.Column="0" Source="{Binding daily[2].weather[0].icon_url}" VerticalOptions="Center" HorizontalOptions="Center"/>
                                                     <Label Grid.Row="2" Grid.Column="0" Text="{Binding daily[2].temp.day, StringFormat='{0:N0}°'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontAttributes="Bold" TextColor="#7B7C7D"/>
                                                 </StackLayout>
                                             </pancakeview:PancakeView>
-                                            <pancakeview:PancakeView Grid.Column="2"  WidthRequest="60" HeightRequest="150" CornerRadius="10" BackgroundColor="#FFF" >
+                                            <pancakeview:PancakeView Grid.Column="2"  WidthRequest="100" HeightRequest="175" CornerRadius="10" BackgroundColor="#FFF" >
                                                 <StackLayout  Margin="5">
                                                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding daily[3].date_time, StringFormat='{0:M}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontAttributes="Bold" TextColor="#7B7C7D"/>
                                                     <Image Grid.Row="1" Grid.Column="0" Source="{Binding daily[3].weather[0].icon_url}" VerticalOptions="Center" HorizontalOptions="Center"/>
                                                     <Label Grid.Row="2" Grid.Column="0" Text="{Binding daily[3].temp.day, StringFormat='{0:N0}°'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontAttributes="Bold" TextColor="#7B7C7D"/>
                                                 </StackLayout>
                                             </pancakeview:PancakeView>
-                                            <pancakeview:PancakeView Grid.Column="3"  WidthRequest="60" HeightRequest="150"  CornerRadius="10" BackgroundColor="#FFF">
+                                            <pancakeview:PancakeView Grid.Column="3"  WidthRequest="100" HeightRequest="175"  CornerRadius="10" BackgroundColor="#FFF">
                                                 <StackLayout  Margin="5">
                                                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding daily[4].date_time, StringFormat='{0:M}'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" FontAttributes="Bold" TextColor="#7B7C7D"/>
                                                     <Image Grid.Row="1" Grid.Column="0" Source="{Binding daily[4].weather[0].icon_url}" VerticalOptions="Center" HorizontalOptions="Center"/>
@@ -182,13 +206,17 @@
                                             </pancakeview:PancakeView>
 
                                         </Grid>
-                                        
+
                                     </StackLayout>
                                 </pancakeview:PancakeView>
 
-                               
+
 
                             </Grid>
+                            <controls:MTAdView x:Name="myAds" 
+                                               AdsId="{OnPlatform Android='ca-app-pub-3940256099942544/6300978111', 
+                                               iOS='ca-app-pub-3940256099942544/2934735716'}"
+                                               HeightRequest="50" WidthRequest="50"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -196,8 +224,8 @@
         </StackLayout>
     </ScrollView>
 
-  
-    
+
+
     <!--<CollectionView ItemsSource="{Binding WeatherList}">
         <CollectionView.ItemsLayout>
             <GridItemsLayout  Orientation="Vertical" />

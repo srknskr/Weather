@@ -2,52 +2,103 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
              x:Class="Weather.View.AddPlacesPage">
-    <StackLayout Orientation="Vertical" Padding="20">
+    
+    <StackLayout >
 
-        <pv:PancakeView  HeightRequest="50" WidthRequest="300" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
-            <Entry x:Name="cityName" Placeholder="CityName" HorizontalOptions="FillAndExpand" Text="{Binding CityName}"></Entry>
-            <pv:PancakeView.BackgroundGradientStops>
-                <pv:GradientStopCollection>
-                    <pv:GradientStop Color="#9a9b94" Offset="0" />
-                    <pv:GradientStop Color="White" Offset="1" />
-                </pv:GradientStopCollection>
-            </pv:PancakeView.BackgroundGradientStops>
-            <pv:PancakeView.Shadow>
-                <pv:DropShadow Color="#000000" Offset="10,10" />
-            </pv:PancakeView.Shadow>
-        </pv:PancakeView>
 
-        <pv:PancakeView  HeightRequest="50" WidthRequest="300" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
-            <Entry x:Name="cityKey" Placeholder="CityKey" HorizontalOptions="FillAndExpand" Text="{Binding CityKey}"></Entry>
-            <pv:PancakeView.BackgroundGradientStops>
-                <pv:GradientStopCollection>
-                    <pv:GradientStop Color="#9a9b94" Offset="0" />
-                    <pv:GradientStop Color="White" Offset="1" />
-                </pv:GradientStopCollection>
-            </pv:PancakeView.BackgroundGradientStops>
-            <pv:PancakeView.Shadow>
-                <pv:DropShadow Color="#000000" Offset="10,10" />
-            </pv:PancakeView.Shadow>
-        </pv:PancakeView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <pv:PancakeView HeightRequest="50" WidthRequest="300" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
-            <Label Text="SAVE" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            <pv:PancakeView.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}"/>
-            </pv:PancakeView.GestureRecognizers>
-            <pv:PancakeView.BackgroundGradientStops>
-                <pv:GradientStopCollection>
-                    <pv:GradientStop Color="#9a9b94" Offset="0" />
-                    <pv:GradientStop Color="White" Offset="1" />
-                </pv:GradientStopCollection>
-            </pv:PancakeView.BackgroundGradientStops>
-            <pv:PancakeView.Shadow>
-                <pv:DropShadow Color="#000000" Offset="10,10" />
-            </pv:PancakeView.Shadow>
-        </pv:PancakeView>
+
+            <StackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,10"  >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <pancakeview:PancakeView Grid.Column="0" WidthRequest="41" HeightRequest="41" CornerRadius="10"  BackgroundColor="#FFF">
+                        <pancakeview:PancakeView.Shadow>
+                            <pancakeview:DropShadow Color="#000"/>
+                        </pancakeview:PancakeView.Shadow>
+                        <pancakeview:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </pancakeview:PancakeView.GestureRecognizers>
+                        <Image Source="back.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
+                    </pancakeview:PancakeView>
+                    <pancakeview:PancakeView Grid.Column="3" WidthRequest="41" HeightRequest="41" CornerRadius="10" BackgroundColor="#FFF">
+                        <pancakeview:PancakeView.Shadow>
+                            <pancakeview:DropShadow Color="#000"   />
+                        </pancakeview:PancakeView.Shadow>
+                        <Image Source="menu.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
+                    </pancakeview:PancakeView>
+
+                </Grid>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,10"  >
+
+                <pancakeview:PancakeView BackgroundColor="#deecfc"  HeightRequest="50" WidthRequest="350" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+                    <Entry x:Name="cityName" Placeholder="CityName" HorizontalOptions="FillAndExpand" Text="{Binding CityName}"></Entry>
+                    <pancakeview:PancakeView.Shadow>
+                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                    </pancakeview:PancakeView.Shadow>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView BackgroundColor="#deecfc" HeightRequest="50" WidthRequest="350" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+                    <Entry x:Name="cityKey" Placeholder="CityKey" HorizontalOptions="FillAndExpand" Text="{Binding CityKey}"></Entry>
+                    
+                    <pancakeview:PancakeView.Shadow>
+                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                    </pancakeview:PancakeView.Shadow>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView BackgroundColor="#deecfc" HeightRequest="50" WidthRequest="350" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+                    <Entry x:Name="cityLat" Placeholder="CityLat" HorizontalOptions="FillAndExpand" Text="{Binding CityLat}"></Entry>
+                  
+                    <pancakeview:PancakeView.Shadow>
+                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                    </pancakeview:PancakeView.Shadow>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView BackgroundColor="#deecfc" HeightRequest="50" WidthRequest="350" CornerRadius="5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+                    <Entry x:Name="cityLon" Placeholder="CityLon" HorizontalOptions="FillAndExpand" Text="{Binding CityLon}"></Entry>
+                    
+                    <pancakeview:PancakeView.Shadow>
+                        <pancakeview:DropShadow Color="#000000" Offset="10,10" />
+                    </pancakeview:PancakeView.Shadow>
+                </pancakeview:PancakeView>
+
+                <pancakeview:PancakeView BackgroundColor="#87a8d0" HeightRequest="50" WidthRequest="350" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+                    <Label Text="SAVE" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <pancakeview:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapCommand}"/>
+                    </pancakeview:PancakeView.GestureRecognizers>
+                    <pancakeview:PancakeView.BackgroundGradientStops>
+                        <pancakeview:GradientStopCollection>
+                            <pancakeview:GradientStop Color="#87a8d0" Offset="0" />
+                            <pancakeview:GradientStop Color="#b9ceeb" Offset="1" />
+                        </pancakeview:GradientStopCollection>
+                    </pancakeview:PancakeView.BackgroundGradientStops>
+                    <pancakeview:PancakeView.Shadow>
+                        <pancakeview:DropShadow Color="#87a8d0" Offset="10,10" />
+                    </pancakeview:PancakeView.Shadow>
+                </pancakeview:PancakeView>
+            </StackLayout>
+
+        </Grid>
+
+     
         
     </StackLayout>
 </ContentPage>

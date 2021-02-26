@@ -66,6 +66,7 @@ namespace Weather.ViewModel
         }
         public PlacesViewModel()
         {
+         //   GetConnection().FullDelete();
             Places = GetConnection().GetAll();
         }
         public ICommand SelectionCommand => new Command(GoToWeatherAsync);
@@ -79,10 +80,27 @@ namespace Weather.ViewModel
                 await Shell.Current.Navigation.PushAsync(weatherPage);
             }
         }
+
+
+
+
+        public ICommand BackCommand => new Command(Back);
+        private async void Back()
+        {
+            //var mainPage = new AddPlacesPage();//this could be content page
+            //var rootPage = new NavigationPage(mainPage);
+            //App.Navigation = rootPage.Navigation;
+
+           await App.Current.MainPage.Navigation.PopModalAsync();
+
+        }
         public ICommand TapCommand => new Command(Tap);
         private async void Tap()
         {
-            await Shell.Current.Navigation.PushAsync(new AddPlacesPage ());
+            //var mainPage = new AddPlacesPage();//this could be content page
+            //var rootPage = new NavigationPage(mainPage);
+            //App.Navigation = rootPage.Navigation;
+            await App.Current.MainPage.Navigation.PushModalAsync(new AddPlacesPage());
         }
         public ICommand DeleteCommand => new Command(Delete);
         private async void Delete()
@@ -95,8 +113,5 @@ namespace Weather.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-
     }
 }

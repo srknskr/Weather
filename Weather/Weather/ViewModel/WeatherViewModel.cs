@@ -94,7 +94,6 @@ namespace Weather.ViewModel
         {
             Places = GetConnection().GetFirst();
             Task.Run(APIAsync);
-
         }
         private async Task APIAsync()
         {

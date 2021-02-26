@@ -5,65 +5,110 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             x:Class="Weather.View.PlacesPage">
+             x:Class="Weather.View.PlacesPage"
+             BackgroundColor="#F5F8FD">
     <AbsoluteLayout >
-        <CollectionView x:Name="lvStudents" SelectionMode="Single"  ItemsSource="{Binding Places}" SelectedItem="{Binding SelectedPlaces}" SelectionChangedCommand="{Binding SelectionCommand}">
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,10"  >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <pancakeview:PancakeView Grid.Column="0" WidthRequest="41" HeightRequest="41" CornerRadius="10"  BackgroundColor="#FFF">
+                        <pancakeview:PancakeView.Shadow>
+                            <pancakeview:DropShadow Color="#000"/>
+                        </pancakeview:PancakeView.Shadow>
+                        <pancakeview:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </pancakeview:PancakeView.GestureRecognizers>
+                        <Image Source="back.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
+                    </pancakeview:PancakeView>
+
+                    <Label Grid.Column="2" Text="Locations" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25" FontAttributes="Bold" TextColor="#7B7C7D"/>
+
+                    <pancakeview:PancakeView Grid.Column="4" WidthRequest="41" HeightRequest="41" CornerRadius="10" BackgroundColor="#FFF">
+                        <pancakeview:PancakeView.Shadow>
+                            <pancakeview:DropShadow Color="#000"   />
+                        </pancakeview:PancakeView.Shadow>
+                        <Image Source="menu.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="10" />
+                    </pancakeview:PancakeView>
+
+                </Grid>
+            </StackLayout>
+
+            <CollectionView Grid.Row="1" x:Name="lvStudents" SelectionMode="Single"  ItemsSource="{Binding Places}" SelectedItem="{Binding SelectedPlaces}" SelectionChangedCommand="{Binding SelectionCommand}">
+
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate >
-                    <StackLayout>
 
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup Name="CommonStates">
-                                <VisualState Name="Normal" >
-                                    <VisualState.Setters>
-                                        <Setter Property="BackgroundColor" Value="#fff" />
-                                    </VisualState.Setters>
+                        <StackLayout>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" >
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent" />
+                                        </VisualState.Setters>
                                     </VisualState>
-                                <VisualState Name="Selected">
-                                    <VisualState.Setters>
-                                        <Setter Property="BackgroundColor" Value="#d4d6c8" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="#b9ceeb" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
 
-                        <pancakeview:PancakeView BackgroundColor="#d4d6c8" HeightRequest="100" WidthRequest="300" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Padding="0" Margin="0,10" >
-    
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                            <pancakeview:PancakeView BackgroundColor="#87a8d0" HeightRequest="120" WidthRequest="350" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,10,20,10">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="2" Text="{Binding CityName}" TextColor="Black" FontSize="40" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"  />
-                                <Label Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" Text="{Binding CityKey}" TextColor="Black" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="15,-10,0,0"  />
-                            </Grid>
-                        </pancakeview:PancakeView>
-                    </StackLayout>
-                </DataTemplate>
+                                    <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Text="{Binding CityName}" TextColor="White" FontSize="41" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"  />
+                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CityKey, StringFormat='City Key: {0:N0}'}"  TextColor="White" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="15,-10,0,0"  />
+                                    <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CityLat, StringFormat='Latitude: {0:N0}'}" TextColor="White" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="15,-10,0,0"  />
+                                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CityLon, StringFormat='Longitude: {0:N0}'}" TextColor="White" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="15,-10,0,0"  />
+                                </Grid>
+                            </pancakeview:PancakeView>
+                        </StackLayout>
+                    </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+        </Grid>
+             
         <pancakeview:PancakeView AbsoluteLayout.LayoutBounds="0.90,0.95,60,60"
-            AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="#d4d6c8"  HeightRequest="60" WidthRequest="60" CornerRadius="60"   BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+            AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="#fff"  HeightRequest="60" WidthRequest="60" CornerRadius="60"   BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,0">
+            <pancakeview:PancakeView.Shadow>
+                <pancakeview:DropShadow Color="#000000" Offset="10,10"   />
+            </pancakeview:PancakeView.Shadow>
             <pancakeview:PancakeView.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}" NumberOfTapsRequired="2"/>
             </pancakeview:PancakeView.GestureRecognizers>
-            <pancakeview:PancakeView.Shadow>
-                <pancakeview:DropShadow Color="#000000" Offset="10,10" />
-            </pancakeview:PancakeView.Shadow>
-            <Image Source="plus.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Image Source="add.png" HeightRequest="33" WidthRequest="33" HorizontalOptions="Center" VerticalOptions="Center"/>
 
         </pancakeview:PancakeView>
        

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             x:Class="Weather.View.AdMobPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            
+            <Button Text="Interstitial" Clicked="Interstitial_Clicked"/>
+            <Button Text="Rewarded" Clicked="Rewarded_Clicked"/>
+            
+            <controls:MTAdView x:Name="myAds" 
+                               AdsId="{OnPlatform Android='ca-app-pub-3940256099942544/6300978111', 
+                                                  iOS='ca-app-pub-3940256099942544/2934735716'}"
+                               HeightRequest="50"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
