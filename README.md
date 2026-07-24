@@ -164,17 +164,18 @@ period-correct toolchain or a migration to .NET MAUI may be necessary.
 
 ### Configure Credentials
 
-The repository currently embeds service credentials in client source files:
+The previously committed OpenWeatherMap, NewsAPI, and Syncfusion values have been
+removed from source. The legacy clients now read these process environment
+variables and fail explicitly when a required API key is missing:
 
-- `Weather/Weather/Services/WeatherAPI.cs`
-- `Weather/Weather/Services/NewsAPI.cs`
-- `Weather/Weather/App.xaml.cs`
+- `OPENWEATHERMAP_API_KEY`
+- `NEWS_API_KEY`
+- `SYNCFUSION_LICENSE_KEY` (optional at startup; required for licensed controls)
 
-Treat the committed values as compromised: revoke or rotate them before running the
-project. Do not commit replacements. For a maintained app, keep billable API
-credentials behind a backend service and load non-secret build configuration from
-platform-appropriate settings. Register the Syncfusion license from protected build
-configuration.
+Historical values must still be treated as compromised and revoked or rotated in
+their provider dashboards. Do not commit replacements. For a maintained app, keep
+billable API access behind a backend service and use platform-appropriate
+configuration for non-secret values.
 
 ### Restore and Build
 
@@ -207,7 +208,7 @@ SDK. This is a legacy-toolchain compatibility failure; iOS was not runtime-teste
 - The dashboard uses fixed coordinates rather than device geolocation or a selected
   saved place.
 - SQLite is registered for Android only; iOS local-data flows are incomplete.
-- API and Syncfusion credentials are committed in source and require rotation.
+- historical API and Syncfusion values require provider-side rotation even though they have been removed from the current source
 - News loading assumes a saved place and a minimum response size, with limited
   empty/error-state handling.
 - Service clients instantiate `HttpClient` per call and have minimal cancellation,
@@ -218,8 +219,8 @@ SDK. This is a legacy-toolchain compatibility failure; iOS was not runtime-teste
 
 ## Modernization Path
 
-1. Revoke the exposed credentials and move sensitive service access behind a small
-   authenticated backend.
+1. Revoke the historical credentials and move sensitive service access behind a
+   small authenticated backend.
 2. Migrate the shared UI and platform hosts to .NET MAUI on a supported .NET
    release.
 3. Choose one navigation model, make it the tested root flow, and add empty,
