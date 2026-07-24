@@ -12,7 +12,14 @@ namespace Weather
     {
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mjk3NDk0QDMxMzgyZTMyMmUzMEY4b3pZZUtOcldJWHNIMFZhMithVlA3ZlBISWJBbVZNSEcrdjNnb2lXaFk9");
+            var syncfusionLicense =
+                Environment.GetEnvironmentVariable("SYNCFUSION_LICENSE_KEY");
+            if (!string.IsNullOrWhiteSpace(syncfusionLicense))
+            {
+                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(
+                    syncfusionLicense);
+            }
+
             InitializeComponent();
             MainPage = new MainPage();
         }

@@ -11,7 +11,6 @@ namespace Weather.Services
 {
     class WeatherAPI
     {
-        public const string OPENWEATHERMAP_API_KEY = "ece317b574b62dbc425b34aedcc2a774";
         public const string BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?q={0}&appid={1}&units=metric";
         public const string BASE_URL2 = "https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&units={2}&appid={3}";
 
@@ -27,7 +26,7 @@ namespace Weather.Services
             {
 
                 FiveDayThreeHours weather = new FiveDayThreeHours();
-                string url = String.Format(BASE_URL, query, OPENWEATHERMAP_API_KEY);
+                string url = String.Format(BASE_URL, query, GetApiKey());
 
                 if (Connectivity.NetworkAccess != NetworkAccess.Internet &&
                     !Barrel.Current.IsExpired(key: url))
@@ -61,7 +60,7 @@ public static async Task<OneCallAPI> GetOneCallAPIAsync(double lat, double lon, 
     Barrel.ApplicationId = "WeatherCache";
 
     OneCallAPI weather = new OneCallAPI();
-    string url = String.Format(BASE_URL2, lat, lon, units, OPENWEATHERMAP_API_KEY);
+    string url = String.Format(BASE_URL2, lat, lon, units, GetApiKey());
 
     //check connectivity, if not get data from cache
     if (Connectivity.NetworkAccess != NetworkAccess.Internet && !Barrel.Current.IsExpired(key: url))
@@ -90,5 +89,17 @@ public static async Task<OneCallAPI> GetOneCallAPIAsync(double lat, double lon, 
 
 
 }
+
+        private static string GetApiKey()
+        {
+            var apiKey = Environment.GetEnvironmentVariable("OPENWEATHERMAP_API_KEY");
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                throw new InvalidOperationException(
+                    "Set OPENWEATHERMAP_API_KEY outside source control before using weather services.");
+            }
+
+            return apiKey;
+        }
     }
 }
